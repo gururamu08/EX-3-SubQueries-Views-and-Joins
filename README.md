@@ -68,55 +68,58 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 ### Q1) List the name of the employees whose salary is greater than that of employee with empno 7566.
 ### QUERY:
 ```
-SELECT ename FROM em WHERE sal > (SELECT sal FROM em WHERE empno = 7566);
+SELECT ename FROM emp WHERE sal > (SELECT sal FROM emp WHERE empno = 7566);
 ```
 ### OUTPUT:
-![image](https://github.com/BharathCSEIOT/EX-3-SubQueries-Views-and-Joins/assets/122793480/021989a9-8487-4458-904b-083317b0c32c)
+![image](https://github.com/gururamu08/EX-3-SubQueries-Views-and-Joins/assets/118707009/4a830568-0191-4be7-8a5b-e9217ae2154b)
+
 
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
 ```
-SELECT ename,job,sal FROM em WHERE sal = (SELECT MIN(sal) FROM em);
+SELECT ename,job,sal FROM emp WHERE sal = (SELECT MIN(sal) FROM emp);
 ```
 ### OUTPUT:
-![image](https://github.com/BharathCSEIOT/EX-3-SubQueries-Views-and-Joins/assets/122793480/7466a1bd-911b-4f11-a337-0f9e45075cb1)
+![image](https://github.com/gururamu08/EX-3-SubQueries-Views-and-Joins/assets/118707009/7efdb328-bf05-42d7-beb9-f4928bc394ba)
+
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
 ```
-SELECT ename,job FROM em WHERE deptno = 10 AND job IN (SELECT job FROM emp WHERE job = 'sales');
+SELECT ename,job FROM emp WHERE deptno = 10 AND job IN (SELECT job FROM emp WHERE job = 'sales');
 ```
 ### OUTPUT:
+![image](https://github.com/gururamu08/EX-3-SubQueries-Views-and-Joins/assets/118707009/ed170579-a192-436b-8e6a-6dd57f8c444c)
 
-![image](https://github.com/BharathCSEIOT/EX-3-SubQueries-Views-and-Joins/assets/122793480/0ec2f091-3c0b-4816-976c-6068ea31c82c)
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
 ```
-CREATE VIEW emv5 AS SELECT empno,ename,job from em WHERE deptno = 10;
-SELECT ename FROM emv5;
+CREATE VIEW emp5 AS SELECT empno,ename,job from emp WHERE deptno = 10;
+SELECT ename FROM emp5;
 ```
 ### OUTPUT:
-![image](https://github.com/BharathCSEIOT/EX-3-SubQueries-Views-and-Joins/assets/122793480/6020cfcb-9f24-432d-89ec-b5bc6192fad9)
+![image](https://github.com/gururamu08/EX-3-SubQueries-Views-and-Joins/assets/118707009/09c1c0b9-d5ae-42c8-a09b-fac3464e39db)
 
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
 ```
-CREATE VIEW emv30 AS SELECT empno AS "Employee Number",ename AS "Employee Nmae",sal AS "Salary" from em WHERE deptno = 30;
-SELECT * FROM emv30;
+CREATE VIEW emp30 AS SELECT empno AS "Employee Number",ename AS "Employee Nmae",sal AS "Salary" from emp WHERE deptno = 30;
+SELECT * FROM emp30;
 ```
 ### OUTPUT:
-![image](https://github.com/BharathCSEIOT/EX-3-SubQueries-Views-and-Joins/assets/122793480/0b7321b1-2884-4c43-a984-1599505e5823)
+![image](https://github.com/gururamu08/EX-3-SubQueries-Views-and-Joins/assets/118707009/d5c6197a-eadc-48e9-b1a0-acc5b6b3e43c)
+
 
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
 ```
-UPDATE emv5 SET sal = al * 1.1 WHERE job = 'CLERK';
+UPDATE emp5 SET sal = al * 1.1 WHERE job = 'CLERK';
 ```
 ### OUTPUT:
 ![image](https://github.com/BharathCSEIOT/EX-3-SubQueries-Views-and-Joins/assets/122793480/d419d24e-1811-4e29-9aa3-513508d569ad)
